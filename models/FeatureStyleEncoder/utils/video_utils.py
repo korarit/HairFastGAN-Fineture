@@ -326,7 +326,7 @@ def video_reproject(orig_dir_path, recon_dir_path, save_dir_path, state_dir_path
 
 
 # Align faces
-def align_image(img_dir, save_dir, output_size=2048, transform_size=2048, format='*.png'):
+def align_image(img_dir, save_dir, output_size=1024, transform_size=2048, format='*.png'):
     os.makedirs(save_dir, exist_ok=True)
     
     # load face landmark detector
