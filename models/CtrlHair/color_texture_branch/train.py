@@ -89,11 +89,11 @@ def worker(proc, nprocs, args):
 
     if 'curliness' in cfg.predictor:
         ckpt = my_torchlib.load_checkpoint(cfg.predictor.curliness.root_dir + '/checkpoints')
-        solver.curliness_model.load_state_dict(ckpt['Predictor'], strict=True)
+        solver.curliness_model.load_state_dict(ckpt['Predictor'], strict=False)
 
     if 'rgb' in cfg.predictor:
         ckpt = my_torchlib.load_checkpoint(cfg.predictor.rgb.root_dir + '/checkpoints')
-        solver.rgb_model.load_state_dict(ckpt['Predictor'], strict=True)
+        solver.rgb_model.load_state_dict(ckpt['Predictor'], strict=False)
 
     # writer
     if local_rank <= 0:

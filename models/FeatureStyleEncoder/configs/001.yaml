@@ -1,5 +1,5 @@
 # Input data
-resolution: 2048                 
+resolution: 1024                 
 age_min: 20                  
 age_max: 70  
 use_realimg: True

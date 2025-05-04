@@ -34,7 +34,7 @@ class Alignment(nn.Module):
         self.mask_generator.load_state_dict(torch.load('pretrained_models/ShapeAdaptor/mask_generator.pth'))
 
         self.rotate_model = RotateModel()
-        self.rotate_model.load_state_dict(torch.load(self.opts.rotate_checkpoint)['model_state_dict'])
+        self.rotate_model.load_state_dict(torch.load(self.opts.rotate_checkpoint)['model_state_dict'], strict=False)
         self.rotate_model.to(self.opts.device).eval()
 
         self.dilate_erosion = DilateErosion(dilate_erosion=self.opts.smooth, device=self.opts.device)
