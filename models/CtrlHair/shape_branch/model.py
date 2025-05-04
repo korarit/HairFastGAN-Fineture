@@ -154,12 +154,12 @@ class Generator(nn.Module):
         # self.hair_encoder = MaskEncoder(1, cfg.hair_dim, norm='none', layer_num=7, vae_mode=cfg.vae_hair_mode,
                                         pos_encoding_order=cfg.pos_encoding_order,
                                         max_batch_size=max(cfg.total_batch_size, cfg.sample_batch_size))
-        self.face_encoder = MaskEncoder(18, 1024, norm=cfg.g_norm, layer_num=7, vae_mode=False,
+        self.face_encoder = MaskEncoder(20, 2048, norm=cfg.g_norm, layer_num=7, vae_mode=False,
         # self.face_encoder = MaskEncoder(18, 1024, norm='none', layer_num=7, vae_mode=False,
                                         pos_encoding_order=cfg.pos_encoding_order,
                                         max_batch_size=max(cfg.total_batch_size, cfg.sample_batch_size))
-        self.hair_decoder = MaskDecoder(1024 + cfg.hair_dim, output_channel=1, norm=cfg.g_norm, layer_num=7)
-        self.face_decoder = MaskDecoder(1024, output_channel=18, norm=cfg.g_norm, layer_num=7)
+        self.hair_decoder = MaskDecoder(2048 + cfg.hair_dim, output_channel=1, norm=cfg.g_norm, layer_num=7)
+        self.face_decoder = MaskDecoder(2048, output_channel=20, norm=cfg.g_norm, layer_num=7)
 
     def forward_hair_encoder(self, hair, testing=False):
         code, mean, std = self.hair_encoder(hair)

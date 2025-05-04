@@ -113,7 +113,7 @@ def get_parser():
                         help='the directory to save the latent codes and inversion images')
 
     # StyleGAN2 setting
-    parser.add_argument('--size', type=int, default=1024)
+    parser.add_argument('--size', type=int, default=2048)
     parser.add_argument('--ckpt', type=str, default="pretrained_models/StyleGAN/ffhq.pt")
     parser.add_argument('--channel_multiplier', type=int, default=2)
     parser.add_argument('--latent', type=int, default=512)

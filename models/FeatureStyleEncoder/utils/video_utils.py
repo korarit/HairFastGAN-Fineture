@@ -98,7 +98,7 @@ def video_to_frames(video_path, frame_path, img_format='.jpg', count_num=1000, r
             break
 
 # Align faces
-def align_frames(img_dir, save_dir, output_size=1024, transform_size=1024, optical_flow=True, gaussian=True, filter_size=3):
+def align_frames(img_dir, save_dir, output_size=2048, transform_size=2048, optical_flow=True, gaussian=True, filter_size=3):
     
     os.makedirs(save_dir, exist_ok=True)
 
@@ -290,7 +290,7 @@ def video_reproject(orig_dir_path, recon_dir_path, save_dir_path, state_dir_path
 
         coeffs = find_coeffs(
             [(quad_f[0], quad_f[1]), (quad_f[2] , quad_f[3]), (quad_f[4], quad_f[5]), (quad_f[6], quad_f[7])],
-            [(0, 0), (0, 1024), (1024, 1024), (1024, 0)])
+            [(0, 0), (0, 2048), (2048, 2048), (2048, 0)])
         crop_size = (quad_0[2] - quad_0[0], quad_0[3] - quad_0[1])
         img_2 = img_2.transform(crop_size, Image.PERSPECTIVE, coeffs, Image.BICUBIC)
         output = img_0.copy()
@@ -326,7 +326,7 @@ def video_reproject(orig_dir_path, recon_dir_path, save_dir_path, state_dir_path
 
 
 # Align faces
-def align_image(img_dir, save_dir, output_size=1024, transform_size=1024, format='*.png'):
+def align_image(img_dir, save_dir, output_size=2048, transform_size=2048, format='*.png'):
     os.makedirs(save_dir, exist_ok=True)
     
     # load face landmark detector
@@ -434,7 +434,7 @@ img_to_tensor = transforms.Compose([
     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 ])
 
-def generate_mask(img_dir, save_dir, parsing_net, labels=[1,2,3,4,5,6,9,10,11,12,13], output_size=(1024, 1024), device=torch.device('cuda')):
+def generate_mask(img_dir, save_dir, parsing_net, labels=[1,2,3,4,5,6,9,10,11,12,13], output_size=(2048, 2048), device=torch.device('cuda')):
     os.makedirs(save_dir, exist_ok=True)
     img_list = glob.glob1(img_dir, 'frame*')
     img_list.sort()

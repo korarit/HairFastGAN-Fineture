@@ -33,7 +33,7 @@ class ModulationModule(nn.Module):
 
 
 class FeatureiResnet(nn.Module):
-    def __init__(self, blocks, inplanes=1024):
+    def __init__(self, blocks, inplanes=2048):
         super().__init__()
 
         self.res_blocks = {}
@@ -80,7 +80,7 @@ class ClipBlendingModel(nn.Module):
             [T.Normalize((0.48145466, 0.4578275, 0.40821073), (0.26862954, 0.26130258, 0.27577711))])
         self.face_pool = torch.nn.AdaptiveAvgPool2d((224, 224))
         self.modulation_module_list = nn.ModuleList(
-            [ModulationModule(12, i == 4, inp=512 * 3, middle=1024) for i in range(5)]
+            [ModulationModule(12, i == 4, inp=512 * 3, middle=2048) for i in range(5)]
         )
 
         for param in self.clip_model.parameters():

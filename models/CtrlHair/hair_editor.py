@@ -233,8 +233,8 @@ class HairEditor:
     def get_hair_color(self, img):
         parsing, _ = FaceParsing.parsing_img(img)
         parsing = FaceParsing.swap_parsing_label_to_celeba_mask(parsing)
-        parsing = cv2.resize(parsing.astype('uint8'), (1024, 1024), interpolation=cv2.INTER_NEAREST)
-        img = cv2.resize(img.astype('uint8'), (1024, 1024))
+        parsing = cv2.resize(parsing.astype('uint8'), (2048, 2048), interpolation=cv2.INTER_NEAREST)
+        img = cv2.resize(img.astype('uint8'), (2048, 2048))
         hair_mask = (parsing == HAIR_IDX).astype('uint8')
 
         kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, ksize=(19, 19))

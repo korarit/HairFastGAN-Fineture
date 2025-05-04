@@ -137,7 +137,7 @@ def align_face(data, predictor=None, is_filepath=False, return_tensors=True):
         else:
             img = images[num_img]
 
-        output_size = 1024
+        output_size = 2048
         # output_size = 256
         transform_size = 4096
         enable_padding = True

@@ -59,7 +59,7 @@ attr_dict = {'5_o_Clock_Shadow': 0, 'Arched_Eyebrows': 1, 'Attractive': 2, 'Bags
             'Wearing_Hat': 35, 'Wearing_Lipstick': 36, 'Wearing_Necklace': 37, 'Wearing_Necktie': 38, 'Young': 39}
 
 img_to_tensor = transforms.Compose([
-    transforms.Resize((1024, 1024)),
+    transforms.Resize((2048, 2048)),
     transforms.ToTensor(),
     transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
 ])
@@ -143,7 +143,7 @@ if opts.function == 'video_to_frames':
     video_to_frames(video_path, orig_dir_path, count_num=120, resize=opts.resize)
     create_video(orig_dir_path)
 elif opts.function == 'align_frames':
-    align_frames(orig_dir_path, align_dir_path, output_size=1024, optical_flow=opts.optical_flow, filter_size=opts.filter_size)
+    align_frames(orig_dir_path, align_dir_path, output_size=2048, optical_flow=opts.optical_flow, filter_size=opts.filter_size)
     # parsing mask
     parsing_net = BiSeNet(n_classes=19)
     parsing_net.load_state_dict(torch.load(opts.parsing_model_path))

@@ -46,7 +46,7 @@ class Trainer:
         if self.model is not None:
             self.fid_calc = get_fid_calc('input/fid.pkl', args.fid_dataset)
 
-        self.net = Net(Namespace(size=1024, ckpt='pretrained_models/StyleGAN/ffhq.pt', channel_multiplier=2, latent=512,
+        self.net = Net(Namespace(size=2048, ckpt='pretrained_models/StyleGAN/ffhq.pt', channel_multiplier=2, latent=512,
                                  n_mlp=8, device=self.device))
         self.seg = BiSeNet(n_classes=16)
         self.seg.to(self.device)

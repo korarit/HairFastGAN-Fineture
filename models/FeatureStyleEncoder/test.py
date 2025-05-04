@@ -52,7 +52,7 @@ trainer.enc.load_state_dict(torch.load(opts.pretrained_model_path))
 trainer.enc.eval()
 
 img_to_tensor = transforms.Compose([
-    transforms.Resize((1024, 1024)),
+    transforms.Resize((2048, 2048)),
     transforms.ToTensor(),
     transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
 ])

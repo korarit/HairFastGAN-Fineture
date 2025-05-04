@@ -53,7 +53,7 @@ class Trainer:
         if self.model is not None:
             self.fid_calc = get_fid_calc('input/fid.pkl', args.fid_dataset)
 
-        self.net = Net(Namespace(size=1024, ckpt='pretrained_models/StyleGAN/ffhq.pt', channel_multiplier=2, latent=512,
+        self.net = Net(Namespace(size=2048, ckpt='pretrained_models/StyleGAN/ffhq.pt', channel_multiplier=2, latent=512,
                                  n_mlp=8, device=self.device))
 
         with dnnlib.util.open_url("pretrained_models/StyleGAN/ffhq.pkl") as f:
@@ -293,8 +293,8 @@ class PostProcessModel(nn.Module):
             self.to_latent_2 = nn.ModuleList([ModulationModule(18, i == 4) for i in range(5)])
             self.pixelnorm = PixelNorm()
         else:
-            self.to_latent = nn.Sequential(nn.Linear(1024, 1024), nn.LayerNorm([1024]), nn.LeakyReLU(),
-                                           nn.Linear(1024, 512))
+            self.to_latent = nn.Sequential(nn.Linear(2048, 2048), nn.LayerNorm([2048]), nn.LeakyReLU(),
+                                           nn.Linear(2048, 512))
 
     def forward(self, source, target, target_mask=None, *args, **kwargs):
         s_face, [f_face] = self.encoder_face(source)
@@ -337,7 +337,7 @@ def main(args):
         dataset.extend(batch_data)
         idx += 1
 
-    X_train, X_test = train_test_split(dataset, test_size=1024, random_state=42)
+    X_train, X_test = train_test_split(dataset, test_size=2048, random_state=42)
 
     train_dataset = PP_dataset(*list(zip(*X_train)))
     test_dataset = PP_dataset(*list(zip(*X_test)), is_test=True)

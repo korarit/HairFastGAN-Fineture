@@ -62,7 +62,7 @@ class Trainer:
         self.logger = logger
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-        self.net = Net(Namespace(size=1024, ckpt='pretrained_models/StyleGAN/ffhq.pt', channel_multiplier=2, latent=512,
+        self.net = Net(Namespace(size=2048, ckpt='pretrained_models/StyleGAN/ffhq.pt', channel_multiplier=2, latent=512,
                                  n_mlp=8, device=self.device))
         self.e4e = setup_model('pretrained_models/encoder4editing/e4e_ffhq_encode.pt', 'cuda')[0]
         self.arc_face = iresnet100()

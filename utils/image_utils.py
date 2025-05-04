@@ -72,7 +72,7 @@ def poisson_image_blending(final_image, face_image, dilate_erosion=30, maxn=115)
     hair_face = torch.where(face_mask == 13, torch.ones_like(face_mask),
                             torch.zeros_like(face_mask))
 
-    final_mask = F.interpolate(((1 - hair_target) * (1 - hair_face)).float(), size=(1024, 1024), mode='bicubic')
+    final_mask = F.interpolate(((1 - hair_target) * (1 - hair_face)).float(), size=(2048, 2048), mode='bicubic')
     dilation, _ = dilate_erosion.mask(1 - final_mask)
     mask_save = 1 - dilation[0]
 

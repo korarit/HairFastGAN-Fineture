@@ -17,7 +17,7 @@ import cv2
 PIL.ImageFile.LOAD_TRUNCATED_IMAGES = True  # avoid "Decompressed Data Too Large" error
 
 
-def recreate_aligned_images(img, lm_68, output_size=1024, transform_size=4096, enable_padding=True):
+def recreate_aligned_images(img, lm_68, output_size=2048, transform_size=4096, enable_padding=True):
     pil_img = PIL.Image.fromarray(img)
     lm_chin = lm_68[0: 17]  # left-right
     lm_eyebrow_left = lm_68[17: 22]  # left-right

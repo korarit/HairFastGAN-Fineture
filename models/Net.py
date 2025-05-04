@@ -84,7 +84,9 @@ class Net(nn.Module):
     #     return noises
 
     def cal_layer_num(self):
-        if self.opts.size == 1024:
+        if self.opts.size == 2048:
+            self.layer_num = 20
+        elif self.opts.size == 1024:
             self.layer_num = 18
         elif self.opts.size == 512:
             self.layer_num = 16
