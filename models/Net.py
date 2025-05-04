@@ -85,7 +85,7 @@ class Net(nn.Module):
 
     def cal_layer_num(self):
         if self.opts.size == 2048:
-            self.layer_num = 20
+            self.layer_num = 18
         elif self.opts.size == 1024:
             self.layer_num = 18
         elif self.opts.size == 512:
