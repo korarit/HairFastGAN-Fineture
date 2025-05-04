@@ -402,6 +402,8 @@ class Generator(nn.Module):
             256: 64 * channel_multiplier,
             512: 32 * channel_multiplier,
             1024: 16 * channel_multiplier,
+            2048: 8 * channel_multiplier,
+            
         }
 
 
@@ -678,6 +680,7 @@ class Discriminator(nn.Module):
             256: 64 * channel_multiplier,
             512: 32 * channel_multiplier,
             1024: 16 * channel_multiplier,
+            2048: 8 * channel_multiplier,
         }
 
         convs = [ConvLayer(3, channels[size], 1)]

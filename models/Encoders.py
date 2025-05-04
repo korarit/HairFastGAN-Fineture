@@ -110,7 +110,7 @@ class PostProcessModel(nn.Module):
             **{'arcface_model_path': "pretrained_models/ArcFace/backbone_ir50.pth"}))
 
         self.latent_avg = torch.load('pretrained_models/PostProcess/latent_avg.pt', map_location=torch.device('cuda'))
-        self.to_feature = FeatureiResnet([[1024, 2], [768, 2], [512, 2]])
+        self.to_feature = FeatureiResnet([[2048, 2], [1024, 2], [768, 2], [512, 2]])
 
         self.to_latent_1 = nn.ModuleList([ModulationModule(18, i == 4) for i in range(5)])
         self.to_latent_2 = nn.ModuleList([ModulationModule(18, i == 4) for i in range(5)])
