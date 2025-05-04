@@ -31,7 +31,7 @@ parser.add_argument('--stylegan_model_path', type=str, default='./pixel2style2pi
 opts = parser.parse_args()
 
 
-StyleGAN = Generator(2048, 512, 8)
+StyleGAN = Generator(1024, 512, 8)
 state_dict = torch.load(opts.stylegan_model_path, map_location='cpu')
 StyleGAN.load_state_dict(get_keys(state_dict, 'decoder'), strict=True)
 StyleGAN.to(device)

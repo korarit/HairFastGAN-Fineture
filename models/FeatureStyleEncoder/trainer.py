@@ -210,7 +210,7 @@ class Trainer(nn.Module):
             use_noise=config['use_noise'],  
             randomize_noise=config['randomize_noise']
         )"""
-        StyleGAN = Generator(2048, 512, 8)
+        StyleGAN = Generator(1024, 512, 8)
         return StyleGAN
     
     def mapping(self, z):
